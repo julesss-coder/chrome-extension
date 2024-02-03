@@ -1,18 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Reading time",
+  "name": "Random image extension",
+  "action": {},
   "version": "1.0",
-  "description": "Add the reading time to Chrome Extension documentation articles",
-  "action": {
-    "default_icon": "/assets/hello_extensions.png"
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "/scripts/service_worker.js"
   },
-  "content_scripts": [
-    {
-      "js": ["scripts/content.js"],
-      "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
-      ]
-    }
-  ]
+  "chrome_url_overrides" : {
+    "newtab": "my_new_tab.html"
+  }
 }
